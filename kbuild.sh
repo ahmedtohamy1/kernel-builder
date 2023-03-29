@@ -18,7 +18,7 @@ DEVICE=$1
 
 VERSION=BETA
 if [ "${DEVICE}" = "alioth" ]; then
-DEFCONFIG=vendor/alioth_defconfig
+DEFCONFIG=alioth_defconfig
 MODEL="Poco F3"
 elif [ "${DEVICE}" = "lmi" ]; then
 DEFCONFIG=lmi_defconfig
