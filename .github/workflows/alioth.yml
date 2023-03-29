@@ -15,8 +15,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Potato Kernel Alioth
-        run: bash clone.sh && bash kernel/kbuild.sh alioth null
+      - name: Clone kernel
+        run: bash clone.sh
+    
+      - uses: actions/checkout@v3
+      - name: Build Kernel Alioth
+        run: cd kernel && bash kbuild.sh alioth null
         env:
            token: ${{ secrets.TOKEN }}
            chat_id: ${{ secrets.CHAT_ID }}
