@@ -50,12 +50,12 @@ DATE=$(TZ=Asia/Dhaka date +"%Y%m%d-%T")
 TM=$(date +"%F%S")
 
 # Specify Final Zip Name
-ZIPNAME=Potato
+ZIPNAME=UNREAL-KING
 FINAL_ZIP=${ZIPNAME}-${VERSION}-${DEVICE}-KERNEL-AOSP-${TM}.zip
 
 
 # Specify compiler [ proton, nexus, aosp ]
-COMPILER=zyc14old
+COMPILER=neutron
 
 # Clone ToolChain
 function cloneTC() {
