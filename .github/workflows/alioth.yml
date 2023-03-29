@@ -15,12 +15,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Clone kernel
-        run: bash clone.sh
-    
-      - uses: actions/checkout@v3
       - name: Build Kernel Alioth
-        run: cd kernel/ && bash kbuild.sh alioth null
+        run: bash clone.sh && cd kernel/ && bash kbuild.sh alioth null
         env:
            token: ${{ secrets.TOKEN }}
            chat_id: ${{ secrets.CHAT_ID }}
