@@ -55,7 +55,7 @@ FINAL_ZIP=${ZIPNAME}-${VERSION}-${DEVICE}-KERNEL-AOSP-${TM}.zip
 
 
 # Specify compiler [ proton, nexus, aosp ]
-COMPILER=zyc
+COMPILER=neutron
 
 # Clone ToolChain
 function cloneTC() {
