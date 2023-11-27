@@ -9,6 +9,7 @@ on:
 
 jobs:
   Build-Kernel:
+  - uses: actions/checkout@v3
     name: "🐎 Build kernel"
     runs-on: ubuntu-latest
     strategy:
