@@ -8,21 +8,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  Build-Kernel:
-  - uses: actions/checkout@v3
-    name: "🐎 Build kernel"
+  build:
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 2
-      fail-fast: false
+
     steps:
-    - name: "⭐ Install prerequisites"
+      - uses: actions/checkout@v3
+      - name: Build Kernel Alioth
         run: |
           sudo apt-get update
           sudo apt-get install -y build-essential bc curl git zip ftp gcc-aarch64-linux-gnu gcc-arm-linux-gnueabi libssl-dev lftp zstd wget libfl-dev python2 python3 libarchive-tools
-          
-    - name: Build Kernel Alioth
-        run: bash clone.sh && cd kernel/ && bash kbuild.sh alioth null
+          bash clone.sh && cd kernel/ && bash kbuild.sh alioth null
         env:
            token: ${{ secrets.TOKEN }}
            chat_id: ${{ secrets.CHAT_ID }}
