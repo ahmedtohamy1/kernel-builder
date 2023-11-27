@@ -68,7 +68,7 @@ function cloneTC() {
 			;;
 		
 		weeb)
-			git clone --depth=1  https://gitlab.com/GhosutoX/weebx-clang17 clang
+			git clone --depth=1  https://gitlab.com/GhosutoX/weebx-clang16 clang
 			PATH="${KERNEL_DIR}/clang/bin:$PATH"
 			;;
 
