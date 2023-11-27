@@ -191,7 +191,7 @@ function push() {
 
 # Compilation
 
-METHOD=$3
+METHOD=$2
 
 function compile() {
 START=$(date +"%s")
