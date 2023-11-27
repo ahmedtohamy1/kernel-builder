@@ -55,7 +55,7 @@ FINAL_ZIP=${ZIPNAME}-${VERSION}-${DEVICE}-KERNEL-AOSP-${TM}.zip
 
 
 # Specify compiler [ proton, nexus, aosp ]
-COMPILER=zyc
+COMPILER=weeb
 
 # Clone ToolChain
 function cloneTC() {
@@ -67,8 +67,8 @@ function cloneTC() {
 			PATH="${KERNEL_DIR}/clang/bin:$PATH"
 			;;
 		
-		nexus)
-			git clone --depth=1  https://gitlab.com/Project-Nexus/nexus-clang.git clang
+		weeb)
+			git clone --depth=1  https://gitlab.com/GhosutoX/weebx-clang17 clang
 			PATH="${KERNEL_DIR}/clang/bin:$PATH"
 			;;
 
