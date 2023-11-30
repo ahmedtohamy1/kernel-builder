@@ -55,20 +55,20 @@ FINAL_ZIP=${ZIPNAME}-${VERSION}-${DEVICE}-KERNEL-AOSP-${TM}.zip
 
 
 # Specify compiler [ proton, nexus, aosp ]
-COMPILER=weeb
+COMPILER=aosp
 
 # Clone ToolChain
 function cloneTC() {
 	
 	case $COMPILER in
 	
-		zyc14old)
-			git clone --depth=1  https://github.com/Poco-F3-Trees/zyc_clang-14 clang
+		proton)
+			git clone --depth=1  https://github.com/kdrag0n/proton-clang.git clang
 			PATH="${KERNEL_DIR}/clang/bin:$PATH"
 			;;
 		
-		weeb)
-			git clone --depth=1  https://gitlab.com/GhosutoX/weebx-clang16 clang
+		nexus)
+			git clone --depth=1  https://gitlab.com/Project-Nexus/nexus-clang.git clang
 			PATH="${KERNEL_DIR}/clang/bin:$PATH"
 			;;
 
@@ -76,11 +76,11 @@ function cloneTC() {
 			if [ ! -d clang ]; then
 			mkdir clang && cd clang
 			bash <(curl -s https://raw.githubusercontent.com/Neutron-Toolchains/antman/main/antman) -S
-			PATH="${KERNEL_DIR}/clang/bin:$PATH"
 			cd ..
 			else
 			echo "Neutron alreay cloned"
 			fi
+			PATH="${KERNEL_DIR}/clang/bin:$PATH"
 			;;
 
 		nex14)
@@ -95,7 +95,7 @@ function cloneTC() {
 	  		echo "  Already Cloned Aosp Clang"
 	  		echo "××××××××××××××××××××××××××××"
 			else
-			export CLANG_VERSION="clang-r487747"
+			export CLANG_VERSION="clang-r498229b"
 			echo "* It's not cloned, cloning it..."
         		mkdir clangB
         		cd clangB || exit
@@ -109,14 +109,22 @@ function cloneTC() {
 			;;
 			
 		zyc)
-		    mkdir clang
-            cd clang
-		    wget https://raw.githubusercontent.com/ZyCromerZ/Clang/main/Clang-main-lastbuild.txt
-		    V="$(cat Clang-main-lastbuild.txt)"
-            wget -q https://github.com/ZyCromerZ/Clang/releases/download/17.0.0-$V-release/Clang-17.0.0-$V.tar.gz
-	        tar -xf Clang-17.0.0-$V.tar.gz
-	        cd ..
-	        PATH="${KERNEL_DIR}/clang/bin:$PATH"
+		    if [ ! -d clang ]; then
+				mkdir clang
+            	cd clang
+		    	wget https://raw.githubusercontent.com/ZyCromerZ/Clang/main/Clang-main-lastbuild.txt
+		    	V="$(cat Clang-main-lastbuild.txt)"
+            	wget -q https://github.com/ZyCromerZ/Clang/releases/download/18.0.0-$V-release/Clang-18.0.0-$V.tar.gz
+	        	tar -xf Clang-18.0.0-$V.tar.gz
+	        	cd ..
+				fi
+	        	PATH="${KERNEL_DIR}/clang/bin:$PATH"
+	        ;;
+	    slim)
+	        git clone --depth=1 https://gitlab.com/ThankYouMario/android_prebuilts_clang-standalone -b slim-16 clangB
+	        git clone https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.git --depth=1 gcc
+			git clone https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.git  --depth=1 gcc32
+			PATH="${KERNEL_DIR}/clangB/bin:${KERNEL_DIR}/gcc/bin:${KERNEL_DIR}/gcc32/bin:${PATH}"
 	        ;;
 
 		*)
