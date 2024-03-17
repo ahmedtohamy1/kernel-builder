@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build Kernel Alioth
-        run: sudo apt-get update -y && bash clone.sh && cd kernel/ && bash kbuild.sh alioth null
+        run: sudo apt-get update -y && bash clone.sh && cd kernel/ && bash kbuild.sh alioth lto
         env:
            token: ${{ secrets.TOKEN }}
            chat_id: ${{ secrets.CHAT_ID }}
