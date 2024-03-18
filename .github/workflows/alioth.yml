@@ -9,9 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on:
-      group: ubuntu-runners
-      labels: ubuntu-20.04-16core
+    runs-on: ubuntu-latest
     container:
       image: nexgang/ubuntu:latest
 
