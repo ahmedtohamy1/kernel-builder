@@ -54,7 +54,7 @@ TM=$(date +"%F%S")
 
 # Specify Final Zip Name
 ZIPNAME=Redline
-FINAL_ZIP=${ZIPNAME}-${VERSION}-${DEVICE}-KERNEL-AOSP-${TM}.zip
+FINAL_ZIP=${ZIPNAME}-KSU-${DEVICE}-KERNEL-AOSP-${TM}.zip
 
 
 # Specify compiler [ proton, nexus, aosp ]
