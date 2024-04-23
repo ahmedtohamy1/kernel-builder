@@ -19,7 +19,7 @@ LINKER=ld.lld
 
 DEVICE=$1
 
-VERSION=BETA
+VERSION=0.2.0
 if [ "${DEVICE}" = "alioth" ]; then
 DEFCONFIG=alioth_defconfig
 MODEL="Poco F3"
@@ -53,8 +53,8 @@ DATE=$(TZ=Asia/Dhaka date +"%Y%m%d-%T")
 TM=$(date +"%F%S")
 
 # Specify Final Zip Name
-ZIPNAME=Redline
-FINAL_ZIP=${ZIPNAME}-KSU-${DEVICE}-KERNEL-AOSP-${TM}.zip
+ZIPNAME=Pharoh
+FINAL_ZIP=${ZIPNAME}-${DEVICE}-KERNEL-${VERSION}.zip
 
 
 # Specify compiler [ proton, nexus, aosp ]
@@ -137,7 +137,7 @@ function cloneTC() {
 }
         # Clone AnyKernel
       if [ ! -d "AnyKernel3" ]; then
-    git clone --depth=1 https://github.com/levi3609/AnyKernel3 -b redline AnyKernel3
+    git clone --depth=1 https://github.com/ahmedtohamy1/ak3 -b redline AnyKernel3
       fi
 	
 # Export Variables
